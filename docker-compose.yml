@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
+  order:
+    container_name: orderManagementSystem
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - api_base_url=http://localhost:8080
+    ports:
+      - "80:80"
