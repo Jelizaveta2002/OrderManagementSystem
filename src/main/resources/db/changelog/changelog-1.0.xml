@@ -8,11 +8,70 @@
 
     <changeSet  author="Jelizaveta"  id="customer-1">
         <createTable tableName="customers">
-            <column name="reg_code" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
+            <column name="id" type="int">
+                <constraints primaryKey="true" primaryKeyName="customer_pk"/>
+            </column>
+            <column name="registration_code" type="varchar(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="customer_registration_code_unique"/>
+            </column>
+            <column name="full_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="customer_email_unique_constraint"/>
+            </column>
+            <column name="telephone" type="varchar(15)">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
 
+    <changeSet  author="Jelizaveta"  id="product-1">
+        <createTable tableName="products">
+            <column name="id" type="int">
+                <constraints primaryKey="true" primaryKeyName="product_pk"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sku_code" type="varchar(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="product_sku_code_unique"/>
+            </column>
+            <column name="unit_price" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet  author="Jelizaveta"  id="order-1">
+        <createTable tableName="orders">
+            <column name="id" type="int">
+                <constraints primaryKey="true" primaryKeyName="order_pk"/>
+            </column>
+            <column name="customer_id" type="int">
+                <constraints nullable="false" foreignKeyName="order_customer_fk" references="customers(id)"/>
+            </column>
+            <column name="date_submitted" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Jelizaveta" id="orderline-1">
+        <createTable tableName="order_lines">
+            <column name="id" type="int">
+                <constraints primaryKey="true" primaryKeyName="orderline_pk"/>
+            </column>
+            <column name="order_id" type="int">
+                <constraints nullable="false" foreignKeyName="orderline_order_fk" references="orders(id)"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints nullable="false" foreignKeyName="orderline_product_fk" references="products(id)"/>
+            </column>
+            <column name="quantity" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 
 </databaseChangeLog>
