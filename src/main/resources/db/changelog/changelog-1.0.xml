@@ -8,8 +8,8 @@
 
     <changeSet  author="Jelizaveta"  id="customer-1">
         <createTable tableName="customers">
-            <column name="id" type="int">
-                <constraints primaryKey="true" primaryKeyName="customer_pk"/>
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
             </column>
             <column name="registration_code" type="varchar(50)">
                 <constraints nullable="false" unique="true" uniqueConstraintName="customer_registration_code_unique"/>
@@ -28,7 +28,7 @@
 
     <changeSet  author="Jelizaveta"  id="product-1">
         <createTable tableName="products">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="product_pk"/>
             </column>
             <column name="name" type="varchar(50)">
@@ -45,7 +45,7 @@
 
     <changeSet  author="Jelizaveta"  id="order-1">
         <createTable tableName="orders">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="order_pk"/>
             </column>
             <column name="customer_id" type="int">
@@ -59,7 +59,7 @@
 
     <changeSet author="Jelizaveta" id="orderline-1">
         <createTable tableName="order_lines">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="orderline_pk"/>
             </column>
             <column name="order_id" type="int">

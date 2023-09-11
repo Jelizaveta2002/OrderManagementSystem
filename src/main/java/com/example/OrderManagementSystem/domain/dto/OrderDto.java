@@ -12,7 +12,7 @@ public class OrderDto {
     private Long id;
 
     @NotNull
-    private Customer customer;
+    private Long customerId;
 
     @NotNull
     private LocalDateTime dateSubmitted;

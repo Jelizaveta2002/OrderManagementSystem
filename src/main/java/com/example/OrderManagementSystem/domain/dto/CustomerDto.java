@@ -1,6 +1,6 @@
 package com.example.OrderManagementSystem.domain.dto;
 
-import com.example.OrderManagementSystem.domain.model.Order;
+import lombok.Builder;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 public class CustomerDto {
 
     private Long id;
 
-    @NotNull
     private String registrationCode;
 
     @NotNull
@@ -24,5 +24,5 @@ public class CustomerDto {
     @NotNull
     private String telephone;
 
-    protected List<Order> customerOrders = new ArrayList<>();
+    protected List<OrderDto> customerOrders = new ArrayList<>();
 }

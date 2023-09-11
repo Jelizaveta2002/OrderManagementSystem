@@ -11,10 +11,10 @@ public class OrderLineDto {
     private Long id;
 
     @NotNull
-    private Order order;
+    private Long orderId;
 
     @NotNull
-    private Product product;
+    private Long productId;
 
     @NotNull
     private Integer quantity;
