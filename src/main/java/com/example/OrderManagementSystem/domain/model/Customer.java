@@ -37,5 +37,5 @@ public class Customer {
     private String telephone;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    protected List<Order> customerOrders = new ArrayList<>();
+    protected List<Order> orders = new ArrayList<>();
 }

@@ -3,6 +3,7 @@ package com.example.OrderManagementSystem.util;
 import com.example.OrderManagementSystem.domain.dto.CustomerDto;
 import com.example.OrderManagementSystem.domain.model.Customer;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper

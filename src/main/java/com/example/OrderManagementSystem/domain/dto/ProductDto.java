@@ -11,7 +11,6 @@ public class ProductDto {
     @NotNull
     private String name;
 
-    @NotNull
     private String skuCode;
 
     @NotNull

@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -20,6 +22,7 @@ public class CustomerService {
     public CustomerDto saveCustomer(CustomerDto customerDto) {
         log.info(customerDto.toString());
         Customer customer = CustomerMapper.INSTANCE.toEntity(customerDto);
+        customer.setRegistrationCode( UUID.randomUUID().toString());
         log.info(customer.toString());
         return CustomerMapper.INSTANCE.toDto(customerRepository.save(customer));
     }

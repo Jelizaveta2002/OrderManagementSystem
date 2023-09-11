@@ -38,7 +38,6 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
 			<version>1.5.5.Final</version> <!-- Use the same version as mapstruct -->
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
