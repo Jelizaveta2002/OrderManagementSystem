@@ -1,11 +1,11 @@
 package com.example.OrderManagementSystem.domain.dto;
 
-import com.example.OrderManagementSystem.domain.model.Order;
-import com.example.OrderManagementSystem.domain.model.Product;
+import lombok.Builder;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
+@Builder
 public class OrderLineDto {
 
     private Long id;
@@ -19,3 +19,4 @@ public class OrderLineDto {
     @NotNull
     private Integer quantity;
 }
+

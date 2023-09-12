@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-//@Table(name = "orders")
+@Table(name = "orders")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
@@ -20,10 +20,10 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    //@JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    //@Column(name = "date_submitted")
+    @Column(name = "date_submitted")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateSubmitted;
 }
