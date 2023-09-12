@@ -2,12 +2,14 @@ package com.example.OrderManagementSystem.services;
 
 import com.example.OrderManagementSystem.domain.dto.CustomerDto;
 import com.example.OrderManagementSystem.domain.dto.OrderDto;
+import com.example.OrderManagementSystem.domain.dto.ProductDto;
 import com.example.OrderManagementSystem.domain.model.Customer;
 import com.example.OrderManagementSystem.domain.model.Order;
 import com.example.OrderManagementSystem.repositories.OrderRepository;
 import com.example.OrderManagementSystem.util.CustomerMapper;
 import com.example.OrderManagementSystem.util.OrderLineMapper;
 import com.example.OrderManagementSystem.util.OrderMapper;
+import com.example.OrderManagementSystem.util.ProductMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +62,34 @@ public class OrderService {
     }
 
     public List<OrderDto> getOrdersByDate(LocalDateTime dateSubmitted) {
-        return orderRepository.findAllByDateSubmitted(dateSubmitted).
-                stream().map(OrderMapper.INSTANCE::toDto).toList();
+        return orderRepository.findAllByDateSubmitted(dateSubmitted)
+                .stream()
+                .map(order -> {
+                    OrderDto orderDto = OrderMapper.INSTANCE.toDto(order);
+                    orderDto.setOrderLines(
+                            order.getOrderLines()
+                                    .stream()
+                                    .map(OrderLineMapper.INSTANCE::toDto)
+                                    .collect(Collectors.toList())
+                    );
+                    return orderDto;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<OrderDto> getOrdersByProduct(ProductDto productDto) {
+        return orderRepository.findOrdersByProduct(ProductMapper.INSTANCE.toEntity(productDto))
+                .stream()
+                .map(order -> {
+                    OrderDto orderDto = OrderMapper.INSTANCE.toDto(order);
+                    orderDto.setOrderLines(
+                            order.getOrderLines()
+                                    .stream()
+                                    .map(OrderLineMapper.INSTANCE::toDto)
+                                    .collect(Collectors.toList())
+                    );
+                    return orderDto;
+                })
+                .collect(Collectors.toList());
     }
 }

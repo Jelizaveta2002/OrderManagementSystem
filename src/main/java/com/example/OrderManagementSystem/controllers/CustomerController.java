@@ -3,6 +3,7 @@ package com.example.OrderManagementSystem.controllers;
 import com.example.OrderManagementSystem.domain.dto.CustomerDto;
 import com.example.OrderManagementSystem.domain.dto.OrderDto;
 import com.example.OrderManagementSystem.domain.dto.OrderLineDto;
+import com.example.OrderManagementSystem.domain.dto.ProductDto;
 import com.example.OrderManagementSystem.services.CustomerService;
 import com.example.OrderManagementSystem.services.OrderLineService;
 import com.example.OrderManagementSystem.services.OrderService;
@@ -60,5 +61,10 @@ public class CustomerController {
     @GetMapping(value = "getOrdersByDate")
     public List<OrderDto> getOrdersById(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date) {
         return orderService.getOrdersByDate(date);
+    }
+
+    @GetMapping(value = "getOrdersByProduct")
+    public List<OrderDto> getOrdersByProduct(@RequestBody ProductDto productDto) {
+        return orderService.getOrdersByProduct(productDto);
     }
 }
