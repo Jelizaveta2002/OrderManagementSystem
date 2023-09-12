@@ -6,6 +6,7 @@ import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -17,4 +18,6 @@ public class OrderDto {
     private Long customerId;
 
     private LocalDateTime dateSubmitted;
+
+    private List<OrderLineDto> orderLines;
 }

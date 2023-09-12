@@ -7,8 +7,14 @@ import com.example.OrderManagementSystem.services.CustomerService;
 import com.example.OrderManagementSystem.services.OrderLineService;
 import com.example.OrderManagementSystem.services.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -34,5 +40,25 @@ public class CustomerController {
     @PostMapping(value = "addOrder")
     public OrderDto addOrder(@RequestBody OrderDto orderDto) {
         return orderService.saveOrder(orderDto);
+    }
+
+    @GetMapping(value = "getOrdersByCustomer")
+    public List<OrderDto> getOrdersByCustomer(@RequestBody CustomerDto customerDto) {
+        return orderService.getOrdersByCustomer(customerDto);
+    }
+
+    @GetMapping(value = "getOrderById")
+    public OrderDto getOrderById(Long id) {
+        return orderService.getOrderById(id);
+    }
+
+    @GetMapping(value = "getOrderLineById")
+    public Optional<OrderLineDto> getOrderLineById(Long id) {
+        return orderLineService.getOrderLineById(id);
+    }
+
+    @GetMapping(value = "getOrdersByDate")
+    public List<OrderDto> getOrdersById(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date) {
+        return orderService.getOrdersByDate(date);
     }
 }
