@@ -33,4 +33,13 @@ public class OrderLineService {
     public Optional<OrderLineDto> getOrderLineById(Long id) {
         return Optional.ofNullable(OrderLineMapper.INSTANCE.toDto(orderLineRepository.findById(id).get()));
     }
+
+    @Transactional
+    public void updateOrderLineProduct(OrderLineDto updatedOrderLineDto) {
+        Optional<OrderLine> optOrderLine = orderLineRepository.findById(updatedOrderLineDto.getId());
+        if (optOrderLine.isPresent()) {
+            OrderLine orderLine = optOrderLine.get();
+            OrderLineMapper.INSTANCE.updateEntityFromDTO(updatedOrderLineDto, orderLine);
+        }
+    }
 }

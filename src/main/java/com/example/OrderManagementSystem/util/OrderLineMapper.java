@@ -4,6 +4,7 @@ import com.example.OrderManagementSystem.domain.dto.OrderLineDto;
 import com.example.OrderManagementSystem.domain.model.OrderLine;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface OrderLineMapper {
     List<OrderLine> toEntityList(List<OrderLineDto> orderLineDtos);
 
     List<OrderLineDto> toDtoList(List<OrderLine> orderLines);
+
+    void updateEntityFromDTO(OrderLineDto dto, @MappingTarget OrderLine orderLine);
 }

@@ -67,4 +67,9 @@ public class CustomerController {
     public List<OrderDto> getOrdersByProduct(@RequestBody ProductDto productDto) {
         return orderService.getOrdersByProduct(productDto);
     }
+
+    @PutMapping(value = "updateOrderLine")
+    public void updateOrderLine(@RequestBody OrderLineDto orderLineDto) {
+        orderLineService.updateOrderLineProduct(orderLineDto);
+    }
 }
