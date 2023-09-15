@@ -28,7 +28,7 @@ Body: {"name": "banana",
 
 Create a new Order: POST: http://localhost:8080/api/order/addOrder
 Body: {
-"customerId": 1
+"customerId": 4
 }
 
 Create a new orderLine: POST: http://localhost:8080/api/order/addOrderLine
@@ -40,7 +40,7 @@ Body: {
 
 Get orders by customer: GET:  http://localhost:8080/api/order/getOrdersByCustomer
 Body: {
-"id": 1,
+"id": 4,
 "registrationCode": REGISTRATION CODE
 "fullName": "Jelizaveta Voloshina",
 "email": "jelizavetav@gmail.com",
@@ -53,7 +53,7 @@ Get orders by date: GET: http://localhost:8080/api/order/getOrdersByDate?date=20
 
 Get orders by product: GET: http://localhost:8080/api/order/getOrdersByProduct
 Body: {
-"id": 1,
+"id": 4,
 "name": "banana",
 "skuCode": GENERATED SKU-CODE,
 "unitPrice": 1.3
