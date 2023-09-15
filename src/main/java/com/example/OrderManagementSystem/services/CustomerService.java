@@ -26,4 +26,8 @@ public class CustomerService {
         log.info(customer.toString());
         return CustomerMapper.INSTANCE.toDto(customerRepository.save(customer));
     }
+
+    public Customer getCustomerById(Long id) {
+        return customerRepository.findById(id).get();
+    }
 }

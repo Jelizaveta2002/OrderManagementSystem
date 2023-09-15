@@ -1,6 +1,5 @@
 package com.example.OrderManagementSystem.repositories;
 
-import com.example.OrderManagementSystem.domain.model.Order;
 import com.example.OrderManagementSystem.domain.model.OrderLine;
 import com.example.OrderManagementSystem.domain.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
